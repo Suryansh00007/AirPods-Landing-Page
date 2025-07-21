@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Product Landing Page Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 220 27% 4%;
+    --foreground: 220 9% 98%;
+
+    /* Surface Colors */
+    --card: 220 27% 6%;
+    --card-foreground: 220 9% 98%;
+    --popover: 220 27% 6%;
+    --popover-foreground: 220 9% 98%;
+
+    /* Brand Colors - Deep Blue to Purple Gradient */
+    --primary: 234 89% 74%;
+    --primary-foreground: 220 27% 4%;
+    --primary-glow: 234 89% 84%;
+    
+    --secondary: 220 27% 12%;
+    --secondary-foreground: 220 9% 98%;
+    
+    --accent: 261 83% 58%;
+    --accent-foreground: 220 9% 98%;
+    
+    --muted: 220 27% 8%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 9% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 220 9% 98%;
+    
+    /* UI Elements */
+    --border: 220 27% 12%;
+    --input: 220 27% 12%;
+    --ring: 234 89% 74%;
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(234 89% 74%) 0%, hsl(261 83% 58%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(220 27% 6%) 0%, hsl(220 27% 8%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(234 89% 74% / 0.1) 0%, hsl(261 83% 58% / 0.1) 100%);
+    
+    /* Shadows */
+    --shadow-elegant: 0 20px 25px -5px hsl(220 27% 4% / 0.1), 0 10px 10px -5px hsl(220 27% 4% / 0.04);
+    --shadow-glow: 0 0 40px hsl(234 89% 74% / 0.15);
+    --shadow-card: 0 4px 6px -1px hsl(220 27% 4% / 0.1), 0 2px 4px -1px hsl(220 27% 4% / 0.06);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    background-image: radial-gradient(circle at 20% 80%, hsl(234 89% 74% / 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, hsl(261 83% 58% / 0.05) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  /* Gradient Text Effect */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  /* Glassmorphism Effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Hover Glow Effect */
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_40px_hsl(234_89%_74%_/_0.3)];
+  }
+  
+  /* 3D Card Effect */
+  .card-3d {
+    @apply transform-gpu transition-all duration-300 hover:scale-105 hover:-translate-y-2;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-3d:hover {
+    box-shadow: var(--shadow-elegant);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(234 89% 74% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(234 89% 74% / 0.4);
+  }
+}
